@@ -1,0 +1,226 @@
+using System;
+public class matrizes{
+    int i,j;
+    public static void Main(String[]args){
+        Console.WriteLine("Qual o problema");
+        string problema = Console.ReadLine();
+        Console.WriteLine("Qual o tamanho do problema");
+        int linha = Convert.ToInt32(Console.ReadLine());
+        int coluna = Convert.ToInt32(Console.ReadLine());
+        int[,]a= aleatoria(linha, coluna, problema);
+        int[,]d= diagonal(linha, coluna, problema);
+        int[,]id= identidade(linha, coluna, problema);
+        int[,]t= toeplitz(linha, coluna, problema);
+        double[,]ort= ortogonal(linha, coluna, problema);
+        int[,]inf= inferior(linha,coluna,problema);
+        int[,]sup= superior(linha,coluna,problema);
+        int[,]ta= transposta(linha, coluna, problema);
+        if (a!= null) {
+            for (int i = 0; i < linha; i++) {
+                for (int j = 0; j < coluna; j++) {
+                    Console.Write(a[i, j]); 
+                }
+                Console.WriteLine();
+            }
+        }
+        if (d!= null) {
+            for (int i = 0; i < linha; i++) {
+                for (int j = 0; j < coluna; j++) {
+                    Console.Write(d[i, j]); 
+                }
+                Console.WriteLine();
+            }
+        }
+        if (id!= null) {
+            for (int i = 0; i < linha; i++) {
+                for (int j = 0; j < coluna; j++) {
+                    Console.Write(id[i, j]); 
+                }
+                Console.WriteLine();
+            }
+        }
+        if (t!= null) {
+            for (int i = 0; i < linha; i++) {
+                for (int j = 0; j < coluna; j++) {
+                    Console.Write(t[i, j]); 
+                }
+                Console.WriteLine();
+            }
+        }
+        if (ta!= null) {
+            for (int i = 0; i < linha; i++) {
+                for (int j = 0; j < coluna; j++) {
+                    Console.Write(ta[i, j]); 
+                }
+                Console.WriteLine();
+            }
+        }
+        if (ort!= null) {
+            for (int i = 0; i < linha; i++) {
+                for (int j = 0; j < coluna; j++) {
+                    Console.Write(ort[i, j]); 
+                }
+                Console.WriteLine();
+            }
+        }
+        if(inf!=null) {
+            for (int i=0; i<linha; i++) {
+                for(int j=0; j<coluna;j++) {
+                    Console.Write(inf[i,j]);
+                }
+                Console.WriteLine();
+            }
+        }
+        if(sup!=null) {
+            for(int i=0; i<linha; i++) {
+                for(int j=0; j<coluna;j++) {
+                    Console.Write(sup[i,j]);
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+    public static int[,] aleatoria(int linha, int coluna, string problema){
+       if (problema == "a") {
+            Random rand = new Random();
+            int[,] matriz = new int[linha, coluna];
+            for (int i = 0; i < linha; i++) {
+                for (int j = 0; j < coluna; j++) {
+                    matriz[i, j] = rand.Next(0, 10); 
+                }
+            }
+        return matriz;
+        }
+        return null;
+    }
+    public static int[,] diagonal(int linha, int coluna, string problema) {
+        if(problema == "b") {
+            if(linha==coluna) {
+            Random rand = new Random();
+            int[,] matriz = new int[linha, coluna];
+            for (int i = 0; i < linha; i++) {
+                for (int j = 0; j < coluna; j++) {
+                    if(i==j){
+                    matriz[i, j] = rand.Next(1, 10);
+                    }
+                }
+            }
+        return matriz;
+        }else{
+            Console.WriteLine("Tem que ser quadrada!");
+        }
+        }
+        return null;
+    }
+    public static int[,] identidade(int linha, int coluna, string problema) {
+        if(problema == "c") {
+            if(linha==coluna) {
+            Random rand = new Random();
+            int[,] matriz = new int[linha, coluna];
+            for (int i = 0; i < linha; i++) {
+                for (int j = 0; j < coluna; j++) {
+                    if(i==j){
+                    matriz[i, j] = 1;
+                    }
+                }
+            }
+        return matriz;
+        }else{
+            Console.WriteLine("Tem que ser quadrada!");
+        }
+        }
+        return null;
+    }
+    public static int[,] toeplitz(int linha, int coluna, string problema) {
+        if(problema == "d") {
+            if(linha==coluna) {
+            Random rand = new Random();
+            int numeroaleatorio = rand.Next(1,10);
+            int[,] matriz = new int[linha, coluna];
+            for (int i = 0; i < linha; i++) {
+                for (int j = 0; j < coluna; j++) {
+                    if(i==j){
+                    matriz[i, j] = numeroaleatorio;
+                    } else {
+                        matriz[i, j] = rand.Next(1, 10);
+                    }
+                }
+            }
+        return matriz;
+        }
+        }
+        return null;
+    }
+     public static double[,] ortogonal(int linha, int coluna, string problema){
+    if (problema == "e") {
+        if (linha == coluna) {
+            Random rand = new Random();
+            double[,] matriz = new double[linha, coluna];
+            for (int i = 0; i < linha; i++) {
+                for (int j = 0; j < coluna; j++) {
+                    if (i == j) {
+                        matriz[i, j] = rand.Next(0, 2) == 0 ? -1 : 1;
+                    } else {
+                        matriz[i, j] = 0;
+                    }
+                }
+            }
+            return matriz;
+        } else {
+            Console.WriteLine("Tem que ser quadrada!");
+        }
+    }
+    return null;
+}
+    public static int[,] inferior(int linha, int coluna, string problema) {
+        if (problema == "f") {
+            if(linha==coluna) {
+            Random rand = new Random();
+            int[,] matriz = new int[linha, coluna];
+            for (int i = 0; i < linha; i++) {
+                for (int j = 0; j < coluna; j++) {
+                    if(i>j){
+                    matriz[i, j] = rand.Next(1, 10);
+                    }
+                }
+            }
+        return matriz;
+        }else{
+            Console.WriteLine("Tem que ser quadrada!");
+        }
+        }
+        return null;
+    }
+    public static int[,] superior(int linha, int coluna, string problema) {
+        if (problema == "g") {
+            if(linha==coluna) {
+            Random rand = new Random();
+            int[,] matriz = new int[linha, coluna];
+            for (int i = 0; i < linha; i++) {
+                for (int j = 0; j < coluna; j++) {
+                    if(i<j){
+                    matriz[i, j] = rand.Next(1, 10);
+                    }
+                }
+            }
+        return matriz;
+        }else{
+            Console.WriteLine("Tem que ser quadrada!");
+        }
+        }
+        return null;
+    }
+    public static int[,] transposta(int linha, int coluna, string problema){
+       if (problema == "h") {
+            Random rand = new Random();
+            int[,] matriz = new int[coluna, linha];
+            for (int i = 0; i < linha; i++) {
+                for (int j = 0; j < coluna; j++) {
+                    matriz[j, i] = rand.Next(0, 10); 
+                }
+            }
+        return matriz;
+        }
+        return null;
+    }
+}
