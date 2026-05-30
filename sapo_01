@@ -1,0 +1,16 @@
+using System;
+
+public class sapo_01 {
+    public static void Main(String[]args) {
+        Console.WriteLine("Digite a posicao[x] destino[y] e distância[d] ");
+        int x = Convert.ToInt32(Console.ReadLine());
+        int y = Convert.ToInt32(Console.ReadLine());
+        int d = Convert.ToInt32(Console.ReadLine());
+        int qnt_pulos=0;
+         while (x < y) {
+            x = x + d;
+            qnt_pulos++;
+        }
+        Console.WriteLine("Número de pulos: " + qnt_pulos);
+    }
+}
