@@ -8,7 +8,7 @@ public class aposta {
         int[,] tabela_oficial = new int[13, 3];
         for (int i = 0; i < 13; i++) {
             time++;
-            Console.WriteLine("time " + time + "Você acha que vai vencer[1], empate[2] perda[3]");
+            Console.WriteLine("time: " + time + ", Voce acha que vai vencer[1], empate[2] perda[3].");
             int escolha = Convert.ToInt32(Console.ReadLine());
             tabela_jogador[i, escolha - 1] = 1;
         }
