@@ -1,0 +1,35 @@
+using System;
+public class contracheques {
+    public static void Main (String[]args) {
+        Console.WriteLine("Digite a quantidade de funcionarios");
+        int qnt_funcionarios = Convert.ToInt32(Console.ReadLine());
+        int count = 0;
+        Console.WriteLine("Digite o salario referencia da empresa");
+        double salario_ref = Convert.ToDouble(Console.ReadLine());
+        double salario_base = salario_ref*1.3;
+            while(count!=qnt_funcionarios) {
+                count++;
+                Console.WriteLine("Numero de inscricao?");
+                int num_insc = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Nome?");
+                string nome = Console.ReadLine();
+                Console.WriteLine("Horas normais trabalhadas?");
+                double hora_normais = Convert.ToDouble(Console.ReadLine());
+                double salario_normal = (salario_ref*1.3)/hora_normais;
+                Console.WriteLine("Horas extras trabalhadas?");
+                double hora_extra = Convert.ToDouble(Console.ReadLine());
+                double salario_extra = salario_normal + (salario_normal * 0.30);
+                Console.WriteLine("Deducao Do INSS:");
+                double salario_bruto = (hora_normais * salario_normal) - (hora_extra * salario_extra);
+                double INSS = salario_bruto * 0.11;
+                Console.WriteLine("Salario Liquido");
+                double salario_liquido = salario_bruto - INSS;
+                Console.WriteLine("Numero de inscricao : " + num_insc);
+                Console.WriteLine("Nome : " + nome);
+                Console.WriteLine("Hora normal : " + salario_normal);
+                Console.WriteLine("Hora extra : " + salario_extra);
+                Console.WriteLine("Deducao INSS : " + INSS);
+                Console.WriteLine("Salario Liquido : " + salario_liquido);
+        }
+    }
+}
