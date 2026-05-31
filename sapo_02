@@ -1,0 +1,39 @@
+using System;
+public class sapo_02 {
+    public static void Main(String[]args) {
+        Console.WriteLine("Digite o numero de linhas [n], numero de colunas [m] e a distancia do salto[d]");
+        int n = Convert.ToInt32(Console.ReadLine());
+        int m = Convert.ToInt32(Console.ReadLine());
+        int d = Convert.ToInt32(Console.ReadLine());
+        int[,] matriz = new int[n, m];
+        int linhasapo = n - 1;
+        int colunasapo = 0;
+        matriz[linhasapo, colunasapo] = 1;
+        Console.WriteLine($"({linhasapo},{colunasapo})");
+        for (int i = 0; i < n; i++) {
+                for (int j = 0; j < m; j++) {
+                    Console.Write(matriz[i, j]); 
+                }
+                Console.WriteLine();
+            }
+        while (linhasapo != 0 || colunasapo != m - 1) {
+        matriz[linhasapo, colunasapo] = 0;
+        if (colunasapo + d<m){
+            colunasapo += d;
+        }
+        else if (linhasapo > 0){
+            linhasapo--;
+        }else{
+            break;
+        }
+        matriz[linhasapo, colunasapo] = 1;
+        Console.WriteLine($"({linhasapo},{colunasapo})");
+        for (int i = 0; i < n; i++) {
+                for (int j = 0; j < m; j++) {
+                    Console.Write(matriz[i, j]); 
+                }
+                Console.WriteLine();
+            }
+        }
+    }    
+}
