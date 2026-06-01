@@ -1,5 +1,4 @@
 using System;
-
 public class sapo_01 {
     public static void Main(String[]args) {
         Console.WriteLine("Digite a posicao[x] destino[y] e distância[d] ");
